@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v2.0.3 =====
+# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v2.0.4 =====
 # Comprehensive GitHub repository activity tracking
 # Features:
 # - Multi-repository tracking
@@ -144,7 +144,7 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #f6f8fa; color:
 .footer-version { font-size: 12px; color: #656d76; margin-top: 15px; text-align: center; }
 @media only screen and (max-width: 600px) { 
     .footer { padding: 35px 20px 25px 20px; line-height: 2.2; }
-    .footer-watermark { width: 45px; margin-top: 3em; } 
+    .footer-watermark { width: 40px; margin-top: 3em; } 
     .footer-divider { width: 80%; }
 }
 
@@ -165,7 +165,7 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #f6f8fa; color:
     .commit-meta span { width: auto; font-size: 13px; padding: 4px 0; }
     .commit-meta .meta-label { font-size: 10px; min-width: 50px; }
     .stat-badge { font-size: 13px; padding: 4px 10px; }
-    .logo { width: 40px; }
+    .logo { width: 50px; }
 }
 </style>
 </head>
@@ -249,7 +249,7 @@ HTML_REPORT+="
 </div>
 <div class='footer-divider'></div>
 <div class='tagline-footer'>Discover » Improve » Prevail</div>
-<div class='footer-version'>⚙️ CyberShield GitHub Activity Report v2.0.3</div>"
+<div class='footer-version'>⚙️ CyberShield GitHub Activity Report v2.0.4</div>"
 
 if [ -n "$LOGO_BASE64" ]; then
 HTML_REPORT+="
