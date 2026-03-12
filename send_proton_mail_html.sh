@@ -17,7 +17,14 @@ fi
 
 RECIPIENT="$1"
 SUBJECT="$2"
-HTML_BODY="$3"
+
+# HTML_BODY kann von STDIN kommen (wenn $3 = "-") oder als Parameter
+if [ "$3" = "-" ]; then
+    # Lese von STDIN
+    HTML_BODY=$(cat)
+else
+    HTML_BODY="$3"
+fi
 
 # Check if environment variables are set
 if [ -z "$SMTP_SERVER" ] || [ -z "$SMTP_PORT" ] || [ -z "$USERNAME" ] || [ -z "$PASSWORD" ]; then

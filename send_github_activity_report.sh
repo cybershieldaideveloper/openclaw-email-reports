@@ -16,6 +16,12 @@ RECIPIENT="internetsucht@gmail.com"
 # Load credentials
 source ~/.env
 
+# Export für send_proton_mail_html.sh
+export PROTON_MAIL_SMTP_SERVER="127.0.0.1"
+export PROTON_MAIL_SMTP_PORT="${PROTON_SMTP_PORT}"
+export PROTON_MAIL_USERNAME="${PROTON_EMAIL}"
+export PROTON_MAIL_PASSWORD="${PROTON_PASSWORD}"
+
 # Logo als Base64 Data URL
 LOGO_BASE64=$(cat ${WORKSPACE}/assets/cyber-shield-logo.base64 2>/dev/null)
 
