@@ -86,7 +86,29 @@ RECIPIENT="your-email@example.com"
 3. Update version in log messages
 4. Update `VERSION` file
 5. Document changes in `CHANGELOG.md`
-6. Commit and push
+6. Run `./auto-sync.sh` to push changes
+
+### Auto-Sync
+Automatically syncs changes to GitHub:
+```bash
+# Manual sync
+./auto-sync.sh
+
+# Or setup as cron job (every 15 minutes)
+*/15 * * * * /home/csa/.openclaw/workspace/repos/openclaw-email-reports/auto-sync.sh
+```
+
+### Error Tracking
+Log errors automatically to `ERROR_TRACKING.md`:
+```bash
+# Manual error logging
+./log-error.sh "SEVERITY" "Component" "Error Message" "Details" --auto-commit
+
+# Example
+./log-error.sh "ERROR" "Email Sender" "SMTP connection failed" "Port 1025 not responding" --auto-commit
+```
+
+Severity levels: `CRITICAL`, `ERROR`, `WARNING`, `INFO`
 
 ### Testing
 ```bash
