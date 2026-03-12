@@ -361,6 +361,8 @@ done <<< "$NEXT_STEPS_LIST"
 HTML_REPORT+="</div>"
 fi
 
+# FOOTER
+HTML_REPORT+="
 <!-- FOOTER -->
 <div class='footer'>
 📧 Fragen? Antworte einfach auf diese E-Mail.<br>
