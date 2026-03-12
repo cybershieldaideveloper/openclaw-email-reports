@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v1.3.0 =====
+# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v1.4.0 =====
 # Comprehensive GitHub repository activity tracking
 # Features:
 # - Multi-repository tracking
@@ -130,16 +130,23 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #0d1117; color:
 .repo-badge { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); color: white; padding: 8px 16px; border-radius: 16px; font-size: 14px; font-weight: 700; box-shadow: 0 2px 6px rgba(0,0,0,0.3); display: inline-block; align-self: flex-start; }
 .commit-message { font-size: 19px; font-weight: 700; color: #e6edf3; line-height: 1.4; margin-top: 5px; }
 .commit-hash { font-family: 'Courier New', monospace; font-size: 12px; color: #8b949e; background: #21262d; padding: 4px 10px; border-radius: 5px; font-weight: 600; }
-.commit-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 15px; font-size: 12px; color: #8b949e; line-height: 1.6; }
-.commit-meta span { display: flex; align-items: center; gap: 6px; }
-.commit-meta .meta-label { color: #6e7681; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px; }
+.commit-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 15px; font-size: 12px; color: #8b949e; line-height: 1.8; }
+.commit-meta span { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.commit-meta .meta-label { color: #6e7681; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 6px; font-weight: 600; }
 .stat-badge { background: #21262d; padding: 4px 12px; border-radius: 6px; font-size: 14px; font-weight: 700; }
 .stat-badge.add { color: #3fb950; }
 .stat-badge.del { color: #f85149; }
-.footer { padding: 35px 30px; background: #0d1117; text-align: center; font-size: 13px; color: #8b949e; line-height: 1.8; position: relative; min-height: 150px; }
-.footer .tagline-footer { color: #fbbf24; font-weight: 600; font-size: 15px; margin-top: 12px; margin-bottom: 8px; }
-.footer-watermark { position: absolute; bottom: 20px; right: 20px; width: 100px; height: auto; opacity: 0.5; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
-@media only screen and (max-width: 600px) { .footer-watermark { width: 70px; bottom: 10px; right: 10px; } }
+.footer { padding: 40px 30px 30px 30px; background: #0d1117; text-align: center; font-size: 13px; color: #8b949e; line-height: 2.0; }
+.footer-content { margin-bottom: 25px; }
+.footer-divider { width: 60%; height: 1px; background: #21262d; margin: 20px auto; }
+.footer .tagline-footer { color: #fbbf24; font-weight: 700; font-size: 16px; margin: 20px 0; letter-spacing: 1px; }
+.footer-watermark { width: 80px; height: auto; opacity: 0.4; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); margin: 20px auto 10px auto; display: block; }
+.footer-version { font-size: 12px; color: #6e7681; margin-top: 15px; }
+@media only screen and (max-width: 600px) { 
+    .footer { padding: 35px 20px 25px 20px; line-height: 2.2; }
+    .footer-watermark { width: 60px; margin-top: 25px; } 
+    .footer-divider { width: 80%; }
+}
 
 @media only screen and (max-width: 600px) {
     body { padding: 0; }
@@ -153,10 +160,11 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #0d1117; color:
     .commit-card { padding: 18px; margin: 16px 0; border-width: 1px; }
     .commit-header { gap: 10px; }
     .repo-badge { font-size: 13px; padding: 7px 14px; }
-    .commit-message { font-size: 17px; margin-top: 0; }
-    .commit-meta { flex-direction: column; gap: 12px; align-items: flex-start; margin-top: 15px; }
-    .commit-meta span { width: 100%; font-size: 13px; }
-    .stat-badge { font-size: 13px; }
+    .commit-message { font-size: 17px; margin-top: 0; line-height: 1.5; }
+    .commit-meta { flex-direction: column; gap: 10px; align-items: flex-start; margin-top: 18px; }
+    .commit-meta span { width: auto; font-size: 13px; padding: 4px 0; }
+    .commit-meta .meta-label { font-size: 10px; min-width: 50px; }
+    .stat-badge { font-size: 13px; padding: 4px 10px; }
     .logo { width: 70px; }
 }
 </style>
@@ -246,7 +254,7 @@ HTML_REPORT+="
 📧 Questions? Reply to this email.<br>
 🔗 Workspace: /home/csa/.openclaw/workspace<br>
 <div class='tagline-footer'>Discover » Improve » Prevail</div>
-⚙️ CyberShield GitHub Activity Report v1.3.0
+⚙️ CyberShield GitHub Activity Report v1.4.0
 </div>
 
 </div>
