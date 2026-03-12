@@ -1,0 +1,23 @@
+# Environment & Credentials
+.env
+*.env
+
+# State Files
+.report_state.json
+
+# Logs
+*.log
+
+# Temp Files
+*.tmp
+*.bak
+*~
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
