@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v1.4.1 =====
+# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v1.4.2 =====
 # Comprehensive GitHub repository activity tracking
 # Features:
 # - Multi-repository tracking
@@ -140,11 +140,11 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #0d1117; color:
 .footer-content { margin-bottom: 25px; }
 .footer-divider { width: 60%; height: 1px; background: #21262d; margin: 20px 0; }
 .footer .tagline-footer { color: #fbbf24; font-weight: 700; font-size: 16px; margin: 20px 0; letter-spacing: 1px; text-align: center; }
-.footer-watermark { width: 120px; height: auto; opacity: 0.4; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); margin-top: 4em; display: block; }
+.footer-watermark { width: 120px; height: auto; opacity: 0.4; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); margin-top: 3em; display: block; }
 .footer-version { font-size: 12px; color: #6e7681; margin-top: 15px; text-align: center; }
 @media only screen and (max-width: 600px) { 
     .footer { padding: 35px 20px 25px 20px; line-height: 2.2; }
-    .footer-watermark { width: 90px; margin-top: 4em; } 
+    .footer-watermark { width: 90px; margin-top: 3em; } 
     .footer-divider { width: 80%; }
 }
 
@@ -243,7 +243,13 @@ fi
 
 # FOOTER
 HTML_REPORT+="
-<div class='footer'>"
+<div class='footer'>
+<div class='footer-content'>
+📧 Questions? Reply to this email
+</div>
+<div class='footer-divider'></div>
+<div class='tagline-footer'>Discover » Improve » Prevail</div>
+<div class='footer-version'>⚙️ CyberShield GitHub Activity Report v1.4.2</div>"
 
 if [ -n "$LOGO_BASE64" ]; then
 HTML_REPORT+="
@@ -251,10 +257,6 @@ HTML_REPORT+="
 fi
 
 HTML_REPORT+="
-📧 Questions? Reply to this email.<br>
-🔗 Workspace: /home/csa/.openclaw/workspace<br>
-<div class='tagline-footer'>Discover » Improve » Prevail</div>
-⚙️ CyberShield GitHub Activity Report v1.4.1
 </div>
 
 </div>
