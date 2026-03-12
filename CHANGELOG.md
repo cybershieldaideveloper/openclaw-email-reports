@@ -5,6 +5,43 @@ All notable changes to the OpenClaw Intelligent Email Reports project will be do
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] - 2026-03-12
+
+### Added
+- **🆕 Separate GitHub Activity Report:** New `send_github_activity_report.sh` script
+  - Dedicated report for Git commit activity across all repos
+  - GitHub-inspired dark theme with Shield Blue gradients
+  - Statistics dashboard (commits, repos, contributors)
+  - Detailed commit cards with hash, author, date, file stats
+  - Mobile-responsive design
+  - Cyber Shield corporate branding
+- **📱 Responsive Design:** Mobile-optimized email layout
+  - Media queries for screens < 600px
+  - Adaptive font sizes and spacing
+  - Single-column layout on mobile
+  - Touch-friendly elements
+
+### Changed
+- **Font Update:** Changed to Aptos (with Segoe UI fallback)
+- **Compact INFO-Level Reports:**
+  - Memory Log: 5 → 2 entries on INFO
+  - TODO Lists: 10 → 3 entries on INFO (both open and done)
+  - Next Steps: 5 → 3 entries on INFO
+  - File Changes: Only shown on WARNING/CRITICAL
+- **Git Activity Removed:** Moved to separate GitHub Activity Report
+- **Mobile Optimizations:**
+  - Smaller logo (60px vs 80px)
+  - Reduced padding and margins
+  - Compact table layouts
+  - Smaller font sizes
+
+### Fixed
+- Email length on mobile (50% reduction for INFO-level)
+- Text wall issue on mobile devices
+- Improved scannability
+
+---
+
 ## [3.1.0] - 2026-03-12
 
 ### Added

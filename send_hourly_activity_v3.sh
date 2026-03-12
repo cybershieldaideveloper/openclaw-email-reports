@@ -1,15 +1,17 @@
 #!/bin/bash
 
-# ===== OPENCLAW INTELLIGENT REPORT SYSTEM v3.1.0 =====
+# ===== OPENCLAW INTELLIGENT REPORT SYSTEM v3.2.0 =====
 # Features:
-# - HTML-Formatierung mit CSS
+# - Responsive Design (Desktop + Mobile optimized)
+# - HTML-Formatierung mit CSS (Aptos font)
 # - Security-Alerts (SSH, Failed Logins)
 # - Netzwerk-Traffic & CPU-Last
 # - Cron-Job Status mit namentlicher Nennung (7h-Zeitfenster)
 # - TODO-Listen mit namentlicher Nennung (Offen/Erledigt)
 # - Dynamische "Nächste Schritte" aus offenen TODOs
-# - ASCII-Charts
+# - Mobile-first: Kompakte Ansicht bei INFO-Level
 # - Intelligente Alert-Logik (sofort vs. Digest)
+# - Git-Aktivitäten ausgelagert in separaten GitHub Report
 
 # Credentials aus .env laden
 source ~/.env
@@ -165,7 +167,7 @@ HTML_REPORT="<!DOCTYPE html>
 <head>
 <meta charset='UTF-8'>
 <style>
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+body { font-family: 'Aptos', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
 .logo { width: 80px; height: auto; margin-bottom: 15px; }
 .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; }
 .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; }
@@ -199,7 +201,27 @@ td:last-child { font-weight: bold; color: #333; }
 .badge-success { background: #E8F5E9; color: #2E7D32; }
 .badge-warning { background: #FFF3E0; color: #E65100; }
 .badge-error { background: #FFEBEE; color: #C62828; }
+
+/* Mobile Responsive Design */
+@media only screen and (max-width: 600px) {
+    body { padding: 10px; }
+    .container { border-radius: 0; }
+    .header { padding: 20px 15px; }
+    .header h1 { font-size: 22px; }
+    .section { padding: 15px 20px; }
+    .section h2 { font-size: 16px; }
+    .section h2 .emoji { font-size: 18px; }
+    .metric { flex-direction: column; align-items: flex-start; }
+    .bar-container { width: 100%; margin: 10px 0; }
+    .log-entry { font-size: 11px; padding: 8px; }
+    table { font-size: 13px; }
+    td { padding: 6px; }
+    .logo { width: 60px; }
+    /* Hide details on mobile for INFO-level */
+    .mobile-hide-info { display: none !important; }
+}
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div class='container'>
@@ -291,19 +313,10 @@ fi
 HTML_REPORT+="
 </div>"
 
-# GIT-AKTIVITÄTEN
-if [ -n "$GIT_COMMITS" ]; then
-HTML_REPORT+="
-<div class='section'>
-<h2><span class='emoji'>📝</span> Git-Aktivitäten</h2>"
-while IFS= read -r commit; do
-    HTML_REPORT+="<div class='log-entry'>$commit</div>"
-done <<< "$GIT_COMMITS"
-HTML_REPORT+="</div>"
-fi
+# GIT-AKTIVITÄTEN - MOVED TO SEPARATE GITHUB ACTIVITY REPORT
 
-# GEÄNDERTE DATEIEN
-if [ -n "$CHANGED_FILES" ]; then
+# GEÄNDERTE DATEIEN (nur bei WARNING/CRITICAL)
+if [ -n "$CHANGED_FILES" ] && [ "$ALERT_LEVEL" != "INFO" ]; then
 HTML_REPORT+="
 <div class='section'>
 <h2><span class='emoji'>📁</span> Geänderte Dateien</h2>
@@ -326,51 +339,80 @@ HTML_REPORT+="
 <tr><td>Erledigt</td><td><span class='badge badge-success'>$TODO_DONE</span></td></tr>
 </table>"
 
-# Offene TODOs auflisten
+# Offene TODOs auflisten (kompakt bei INFO-Level)
 if [ -n "$TODO_OPEN_LIST" ]; then
-HTML_REPORT+="
+    if [ "$ALERT_LEVEL" = "INFO" ]; then
+        TODO_OPEN_DISPLAY=$(echo "$TODO_OPEN_LIST" | head -3)
+    else
+        TODO_OPEN_DISPLAY="$TODO_OPEN_LIST"
+    fi
+    
+    HTML_REPORT+="
 <div style='margin-top: 15px;'>
 <strong>📋 Offene Tasks:</strong>"
-while IFS= read -r todo; do
-    [ -n "$todo" ] && HTML_REPORT+="<div class='log-entry'>⬜ $todo</div>"
-done <<< "$TODO_OPEN_LIST"
-HTML_REPORT+="</div>"
+    while IFS= read -r todo; do
+        [ -n "$todo" ] && HTML_REPORT+="<div class='log-entry'>⬜ $todo</div>"
+    done <<< "$TODO_OPEN_DISPLAY"
+    HTML_REPORT+="</div>"
 fi
 
-# Erledigte TODOs auflisten
+# Erledigte TODOs auflisten (kompakt bei INFO-Level)
 if [ -n "$TODO_DONE_LIST" ]; then
-HTML_REPORT+="
+    if [ "$ALERT_LEVEL" = "INFO" ]; then
+        TODO_DONE_DISPLAY=$(echo "$TODO_DONE_LIST" | head -3)
+    else
+        TODO_DONE_DISPLAY="$TODO_DONE_LIST"
+    fi
+    
+    HTML_REPORT+="
 <div style='margin-top: 15px;'>
 <strong>✅ Erledigte Tasks:</strong>"
-while IFS= read -r todo; do
-    [ -n "$todo" ] && HTML_REPORT+="<div class='log-entry'>✅ $todo</div>"
-done <<< "$TODO_DONE_LIST"
-HTML_REPORT+="</div>"
+    while IFS= read -r todo; do
+        [ -n "$todo" ] && HTML_REPORT+="<div class='log-entry'>✅ $todo</div>"
+    done <<< "$TODO_DONE_DISPLAY"
+    HTML_REPORT+="</div>"
 fi
 
 HTML_REPORT+="
 </div>"
 
-# MEMORY LOG
+# MEMORY LOG (kompakt auf Mobile bei INFO-Level)
 if [ -n "$MEMORY_TAIL" ]; then
-HTML_REPORT+="
+    # Bei INFO-Level nur 2 Einträge, sonst 5
+    if [ "$ALERT_LEVEL" = "INFO" ]; then
+        MEMORY_DISPLAY=$(echo "$MEMORY_TAIL" | tail -n 2)
+        MEMORY_TITLE="Memory Log (letzte 2 Einträge)"
+    else
+        MEMORY_DISPLAY="$MEMORY_TAIL"
+        MEMORY_TITLE="Memory Log (letzte 5 Einträge)"
+    fi
+    
+    HTML_REPORT+="
 <div class='section'>
-<h2><span class='emoji'>💭</span> Memory Log (heute, letzte 5 Einträge)</h2>"
-while IFS= read -r entry; do
-    HTML_REPORT+="<div class='log-entry'>$entry</div>"
-done <<< "$MEMORY_TAIL"
-HTML_REPORT+="</div>"
+<h2><span class='emoji'>💭</span> $MEMORY_TITLE</h2>"
+    while IFS= read -r entry; do
+        HTML_REPORT+="<div class='log-entry'>$entry</div>"
+    done <<< "$MEMORY_DISPLAY"
+    HTML_REPORT+="</div>"
 fi
 
-# NÄCHSTE SCHRITTE (dynamisch aus offenen TODOs)
+# NÄCHSTE SCHRITTE (dynamisch aus offenen TODOs, kompakt bei INFO)
 if [ -n "$NEXT_STEPS_LIST" ]; then
-HTML_REPORT+="
+    if [ "$ALERT_LEVEL" = "INFO" ]; then
+        NEXT_STEPS_DISPLAY=$(echo "$NEXT_STEPS_LIST" | head -3)
+        NEXT_STEPS_TITLE="Nächste Schritte (Top 3)"
+    else
+        NEXT_STEPS_DISPLAY="$NEXT_STEPS_LIST"
+        NEXT_STEPS_TITLE="Nächste Schritte (Top 5)"
+    fi
+    
+    HTML_REPORT+="
 <div class='section'>
-<h2><span class='emoji'>🎯</span> Nächste Schritte (Top 5 offene TODOs)</h2>"
-while IFS= read -r step; do
-    [ -n "$step" ] && HTML_REPORT+="<div class='log-entry'>$step</div>"
-done <<< "$NEXT_STEPS_LIST"
-HTML_REPORT+="</div>"
+<h2><span class='emoji'>🎯</span> $NEXT_STEPS_TITLE</h2>"
+    while IFS= read -r step; do
+        [ -n "$step" ] && HTML_REPORT+="<div class='log-entry'>$step</div>"
+    done <<< "$NEXT_STEPS_DISPLAY"
+    HTML_REPORT+="</div>"
 fi
 
 # FOOTER
@@ -379,7 +421,7 @@ HTML_REPORT+="
 <div class='footer'>
 📧 Fragen? Antworte einfach auf diese E-Mail.<br>
 🔗 Workspace: /home/csa/.openclaw/workspace<br>
-⚙️ OpenClaw Intelligent Report System v3.1.0
+⚙️ OpenClaw Intelligent Report System v3.2.0
 </div>
 
 </div>
@@ -394,9 +436,9 @@ if [ "$SEND_EMAIL" == "yes" ]; then
     echo "$HTML_REPORT" | "${EMAIL_SENDER_SCRIPT}" "${RECIPIENT}" "${SUBJECT}" "$(cat)"
     
     if [ $? -eq 0 ]; then
-        echo "Intelligent Report (v3.1.0) erfolgreich gesendet. Grund: $REASON, Alert-Level: $ALERT_LEVEL"
+        echo "Intelligent Report (v3.2.0) erfolgreich gesendet. Grund: $REASON, Alert-Level: $ALERT_LEVEL"
     else
-        echo "Fehler beim Senden des Intelligent Reports (v3.1.0)."
+        echo "Fehler beim Senden des Intelligent Reports (v3.2.0)."
     fi
 else
     echo "Kein Report-Versand nötig. Nächster Digest um $((CURRENT_HOUR + 6 - (CURRENT_HOUR % 6))) Uhr."

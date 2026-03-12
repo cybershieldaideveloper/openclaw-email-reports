@@ -16,14 +16,20 @@
 
 ## 📦 Version
 
-**Current Version:** v3.1.0
+**Current Version:** v3.2.0
 
 See [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ## 📋 Components
 
 ### 1. `send_hourly_activity_v3.sh`
-Main report generation script. Runs hourly via cron.
+Main system monitoring report. Runs hourly via cron.
+
+**New in v3.2.0:**
+- Responsive design (mobile-optimized)
+- Compact mode for INFO-level alerts
+- Aptos font family
+- Git activity moved to separate report
 
 **Alert Levels:**
 - **CRITICAL:** Disk > 90%, Proton Bridge offline, SSH failures > 20
@@ -34,7 +40,32 @@ Main report generation script. Runs hourly via cron.
 - **Immediate:** Critical alerts
 - **Scheduled:** Every 6 hours (0:00, 6:00, 12:00, 18:00 UTC)
 
-### 2. `send_proton_mail_html.sh`
+### 2. `send_github_activity_report.sh` 🆕
+Dedicated GitHub repository activity tracking.
+
+**Features:**
+- Multi-repository scanning (all Git repos with GitHub remotes)
+- Commit history with detailed stats
+- Statistics dashboard (commits, repos, contributors)
+- GitHub-inspired dark theme
+- Cyber Shield corporate branding
+- Mobile-responsive design
+
+**Usage:**
+```bash
+# Last 24 hours (default)
+./send_github_activity_report.sh
+
+# Custom timeframe (in hours)
+./send_github_activity_report.sh 48
+```
+
+**Recommended Schedule:** Daily at 9:00 AM
+```cron
+0 9 * * * /path/to/send_github_activity_report.sh 24
+```
+
+### 3. `send_proton_mail_html.sh`
 HTML email sender using Proton Mail Bridge SMTP.
 
 ## 🔧 Configuration
