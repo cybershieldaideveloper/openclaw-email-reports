@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v1.0.0 =====
+# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v1.1.0 =====
 # Comprehensive GitHub repository activity tracking
 # Features:
 # - Multi-repository tracking
@@ -107,7 +107,7 @@ HTML_REPORT="<!DOCTYPE html>
 <style>
 body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
 .container { max-width: 1000px; margin: 0 auto; background: #161b22; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); overflow: hidden; }
-.header { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); color: white; padding: 40px; text-align: center; position: relative; overflow: hidden; }
+.header { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); color: white; padding: 45px 40px; text-align: center; position: relative; overflow: hidden; line-height: 1.6; }
 .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px); animation: slide 20s linear infinite; }
 @keyframes slide { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
 .header-content { position: relative; z-index: 1; }
@@ -115,27 +115,27 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #0d1117; color:
 .header h1 { margin: 0; font-size: 32px; font-weight: 700; letter-spacing: 1px; }
 .header .subtitle { opacity: 0.9; margin-top: 10px; font-size: 14px; }
 .tagline { margin-top: 15px; font-size: 16px; font-weight: 600; color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; padding: 30px; background: #0d1117; }
-.stat-card { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); padding: 20px; border-radius: 10px; text-align: center; border: 1px solid #30363d; }
-.stat-number { font-size: 36px; font-weight: 700; color: #fbbf24; }
-.stat-label { color: #8b949e; margin-top: 5px; font-size: 13px; }
-.section { padding: 30px; border-bottom: 1px solid #21262d; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; padding: 35px 30px; background: #0d1117; }
+.stat-card { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); padding: 25px 20px; border-radius: 12px; text-align: center; border: 1px solid #30363d; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.stat-number { font-size: 40px; font-weight: 700; color: #fbbf24; line-height: 1.2; }
+.stat-label { color: #c9d1d9; margin-top: 8px; font-size: 14px; font-weight: 500; }
+.section { padding: 35px 30px; border-bottom: 1px solid #21262d; }
 .section:last-child { border-bottom: none; }
-.section h2 { margin: 0 0 20px 0; color: #fbbf24; font-size: 22px; display: flex; align-items: center; }
-.section h2 .emoji { margin-right: 12px; font-size: 26px; }
-.commit-card { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 15px; margin: 10px 0; transition: all 0.3s; }
+.section h2 { margin: 0 0 25px 0; color: #fbbf24; font-size: 24px; display: flex; align-items: center; line-height: 1.4; }
+.section h2 .emoji { margin-right: 15px; font-size: 28px; }
+.commit-card { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 18px; margin: 15px 0; transition: all 0.3s; line-height: 1.6; }
 .commit-card:hover { border-color: #1e3a8a; transform: translateX(5px); }
-.commit-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.commit-message { font-size: 15px; font-weight: 600; color: #c9d1d9; }
-.commit-hash { font-family: 'Courier New', monospace; font-size: 12px; color: #8b949e; background: #21262d; padding: 3px 8px; border-radius: 4px; }
-.commit-meta { display: flex; gap: 20px; margin-top: 10px; font-size: 13px; color: #8b949e; }
-.commit-meta span { display: flex; align-items: center; gap: 5px; }
-.repo-badge { background: #1e3a8a; color: white; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
-.stat-badge { background: #21262d; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
-.stat-badge.add { color: #3fb950; }
-.stat-badge.del { color: #f85149; }
-.footer { padding: 30px; background: #0d1117; text-align: center; font-size: 12px; color: #8b949e; }
-.footer .tagline-footer { color: #fbbf24; font-weight: 600; font-size: 14px; margin-top: 10px; }
+.commit-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+.commit-message { font-size: 16px; font-weight: 700; color: #c9d1d9; line-height: 1.5; max-width: 70%; }
+.commit-hash { font-family: 'Courier New', monospace; font-size: 12px; color: #8b949e; background: #21262d; padding: 4px 10px; border-radius: 4px; }
+.commit-meta { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 12px; font-size: 13px; color: #8b949e; line-height: 1.6; }
+.commit-meta span { display: flex; align-items: center; gap: 6px; }
+.repo-badge { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); color: white; padding: 6px 12px; border-radius: 14px; font-size: 12px; font-weight: 700; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+.stat-badge { background: #21262d; padding: 3px 10px; border-radius: 5px; font-size: 12px; font-weight: 600; }
+.stat-badge.add { color: #3fb950; background: rgba(63, 185, 80, 0.1); border: 1px solid rgba(63, 185, 80, 0.3); }
+.stat-badge.del { color: #f85149; background: rgba(248, 81, 73, 0.1); border: 1px solid rgba(248, 81, 73, 0.3); }
+.footer { padding: 35px 30px; background: #0d1117; text-align: center; font-size: 13px; color: #8b949e; line-height: 1.8; }
+.footer .tagline-footer { color: #fbbf24; font-weight: 600; font-size: 15px; margin-top: 12px; margin-bottom: 8px; }
 
 @media only screen and (max-width: 600px) {
     body { padding: 0; }
@@ -143,8 +143,12 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #0d1117; color:
     .header { padding: 30px 20px; }
     .section { padding: 20px; }
     .stats-grid { grid-template-columns: 1fr; padding: 20px; }
-    .commit-header { flex-direction: column; align-items: flex-start; }
-    .commit-meta { flex-direction: column; gap: 8px; }
+    .commit-card { padding: 16px; margin: 12px 0; }
+    .commit-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .commit-message { font-size: 15px; max-width: 100%; margin-bottom: 8px; }
+    .repo-badge { margin-top: 5px; }
+    .commit-meta { flex-direction: column; gap: 10px; align-items: flex-start; margin-top: 15px; }
+    .commit-meta span { width: 100%; }
     .logo { width: 70px; }
 }
 </style>
@@ -227,7 +231,7 @@ HTML_REPORT+="
 📧 Questions? Reply to this email.<br>
 🔗 Workspace: /home/csa/.openclaw/workspace<br>
 <div class='tagline-footer'>Discover » Improve » Prevail</div>
-⚙️ CyberShield GitHub Activity Report v1.0.0
+⚙️ CyberShield GitHub Activity Report v1.1.0
 </div>
 
 </div>
