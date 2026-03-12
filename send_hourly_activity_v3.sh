@@ -157,12 +157,16 @@ fi
 
 # ===== HTML-REPORT GENERIEREN =====
 
+# Logo als Base64 Data URL laden
+LOGO_BASE64=$(cat ${WORKSPACE}/assets/cyber-shield-logo.base64 2>/dev/null)
+
 HTML_REPORT="<!DOCTYPE html>
 <html>
 <head>
 <meta charset='UTF-8'>
 <style>
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+.logo { width: 80px; height: auto; margin-bottom: 15px; }
 .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; }
 .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; }
 .header h1 { margin: 0; font-size: 28px; }
@@ -201,7 +205,15 @@ td:last-child { font-weight: bold; color: #333; }
 <div class='container'>
 
 <!-- HEADER -->
-<div class='header'>
+<div class='header'>"
+
+# Logo einfügen (falls vorhanden)
+if [ -n "$LOGO_BASE64" ]; then
+HTML_REPORT+="
+<img src='data:image/webp;base64,$LOGO_BASE64' alt='Cyber Shield Logo' class='logo'>"
+fi
+
+HTML_REPORT+="
 <h1>🤖 OpenClaw VM-1 Report</h1>
 <div class='subtitle'>$(date '+%Y-%m-%d %H:%M:%S UTC')</div>
 <span class='alert-badge alert-${ALERT_LEVEL,,}'>$ALERT_LEVEL</span>
