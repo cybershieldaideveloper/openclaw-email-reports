@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v1.2.0 =====
+# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v1.3.0 =====
 # Comprehensive GitHub repository activity tracking
 # Features:
 # - Multi-repository tracking
@@ -136,8 +136,10 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #0d1117; color:
 .stat-badge { background: #21262d; padding: 4px 12px; border-radius: 6px; font-size: 14px; font-weight: 700; }
 .stat-badge.add { color: #3fb950; }
 .stat-badge.del { color: #f85149; }
-.footer { padding: 35px 30px; background: #0d1117; text-align: center; font-size: 13px; color: #8b949e; line-height: 1.8; }
+.footer { padding: 35px 30px; background: #0d1117; text-align: center; font-size: 13px; color: #8b949e; line-height: 1.8; position: relative; min-height: 150px; }
 .footer .tagline-footer { color: #fbbf24; font-weight: 600; font-size: 15px; margin-top: 12px; margin-bottom: 8px; }
+.footer-watermark { position: absolute; bottom: 20px; right: 20px; width: 100px; height: auto; opacity: 0.5; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
+@media only screen and (max-width: 600px) { .footer-watermark { width: 70px; bottom: 10px; right: 10px; } }
 
 @media only screen and (max-width: 600px) {
     body { padding: 0; }
@@ -233,11 +235,18 @@ fi
 
 # FOOTER
 HTML_REPORT+="
-<div class='footer'>
+<div class='footer'>"
+
+if [ -n "$LOGO_BASE64" ]; then
+HTML_REPORT+="
+<img src='data:image/webp;base64,$LOGO_BASE64' alt='Cyber Shield Logo' class='footer-watermark'>"
+fi
+
+HTML_REPORT+="
 📧 Questions? Reply to this email.<br>
 🔗 Workspace: /home/csa/.openclaw/workspace<br>
 <div class='tagline-footer'>Discover » Improve » Prevail</div>
-⚙️ CyberShield GitHub Activity Report v1.2.0
+⚙️ CyberShield GitHub Activity Report v1.3.0
 </div>
 
 </div>
