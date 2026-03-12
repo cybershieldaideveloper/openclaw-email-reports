@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v1.1.0 =====
+# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v1.2.0 =====
 # Comprehensive GitHub repository activity tracking
 # Features:
 # - Multi-repository tracking
@@ -119,21 +119,23 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #0d1117; color:
 .stat-card { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); padding: 25px 20px; border-radius: 12px; text-align: center; border: 1px solid #30363d; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
 .stat-number { font-size: 40px; font-weight: 700; color: #fbbf24; line-height: 1.2; }
 .stat-label { color: #c9d1d9; margin-top: 8px; font-size: 14px; font-weight: 500; }
-.section { padding: 35px 30px; border-bottom: 1px solid #21262d; }
+.section { padding: 40px 30px; border-bottom: 1px solid #21262d; }
 .section:last-child { border-bottom: none; }
-.section h2 { margin: 0 0 25px 0; color: #fbbf24; font-size: 24px; display: flex; align-items: center; line-height: 1.4; }
-.section h2 .emoji { margin-right: 15px; font-size: 28px; }
-.commit-card { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 18px; margin: 15px 0; transition: all 0.3s; line-height: 1.6; }
-.commit-card:hover { border-color: #1e3a8a; transform: translateX(5px); }
-.commit-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-.commit-message { font-size: 16px; font-weight: 700; color: #c9d1d9; line-height: 1.5; max-width: 70%; }
-.commit-hash { font-family: 'Courier New', monospace; font-size: 12px; color: #8b949e; background: #21262d; padding: 4px 10px; border-radius: 4px; }
-.commit-meta { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 12px; font-size: 13px; color: #8b949e; line-height: 1.6; }
+.section h2 { margin: 0 0 30px 0; color: #fbbf24; font-size: 26px; display: flex; align-items: center; line-height: 1.3; font-weight: 700; }
+.section h2 .emoji { margin-right: 15px; font-size: 30px; }
+.commit-card { background: #0d1117; border: 2px solid #30363d; border-radius: 10px; padding: 20px; margin: 20px 0; transition: all 0.3s; line-height: 1.6; }
+.commit-card:nth-child(even) { background: #161b22; }
+.commit-card:hover { border-color: #1e3a8a; transform: translateX(5px); box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3); }
+.commit-header { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+.repo-badge { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); color: white; padding: 8px 16px; border-radius: 16px; font-size: 14px; font-weight: 700; box-shadow: 0 2px 6px rgba(0,0,0,0.3); display: inline-block; align-self: flex-start; }
+.commit-message { font-size: 19px; font-weight: 700; color: #e6edf3; line-height: 1.4; margin-top: 5px; }
+.commit-hash { font-family: 'Courier New', monospace; font-size: 12px; color: #8b949e; background: #21262d; padding: 4px 10px; border-radius: 5px; font-weight: 600; }
+.commit-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 15px; font-size: 12px; color: #8b949e; line-height: 1.6; }
 .commit-meta span { display: flex; align-items: center; gap: 6px; }
-.repo-badge { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); color: white; padding: 6px 12px; border-radius: 14px; font-size: 12px; font-weight: 700; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-.stat-badge { background: #21262d; padding: 3px 10px; border-radius: 5px; font-size: 12px; font-weight: 600; }
-.stat-badge.add { color: #3fb950; background: rgba(63, 185, 80, 0.1); border: 1px solid rgba(63, 185, 80, 0.3); }
-.stat-badge.del { color: #f85149; background: rgba(248, 81, 73, 0.1); border: 1px solid rgba(248, 81, 73, 0.3); }
+.commit-meta .meta-label { color: #6e7681; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px; }
+.stat-badge { background: #21262d; padding: 4px 12px; border-radius: 6px; font-size: 14px; font-weight: 700; }
+.stat-badge.add { color: #3fb950; }
+.stat-badge.del { color: #f85149; }
 .footer { padding: 35px 30px; background: #0d1117; text-align: center; font-size: 13px; color: #8b949e; line-height: 1.8; }
 .footer .tagline-footer { color: #fbbf24; font-weight: 600; font-size: 15px; margin-top: 12px; margin-bottom: 8px; }
 
@@ -141,14 +143,18 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #0d1117; color:
     body { padding: 0; }
     .container { border-radius: 0; }
     .header { padding: 30px 20px; }
-    .section { padding: 20px; }
+    .header h1 { font-size: 26px; }
+    .section { padding: 25px 20px; }
+    .section h2 { font-size: 22px; margin-bottom: 20px; }
+    .section h2 .emoji { font-size: 26px; }
     .stats-grid { grid-template-columns: 1fr; padding: 20px; }
-    .commit-card { padding: 16px; margin: 12px 0; }
-    .commit-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .commit-message { font-size: 15px; max-width: 100%; margin-bottom: 8px; }
-    .repo-badge { margin-top: 5px; }
-    .commit-meta { flex-direction: column; gap: 10px; align-items: flex-start; margin-top: 15px; }
-    .commit-meta span { width: 100%; }
+    .commit-card { padding: 18px; margin: 16px 0; border-width: 1px; }
+    .commit-header { gap: 10px; }
+    .repo-badge { font-size: 13px; padding: 7px 14px; }
+    .commit-message { font-size: 17px; margin-top: 0; }
+    .commit-meta { flex-direction: column; gap: 12px; align-items: flex-start; margin-top: 15px; }
+    .commit-meta span { width: 100%; font-size: 13px; }
+    .stat-badge { font-size: 13px; }
     .logo { width: 70px; }
 }
 </style>
@@ -201,14 +207,14 @@ while IFS='|' read -r repo hash author email date message files ins del remote; 
     HTML_REPORT+="
 <div class='commit-card'>
 <div class='commit-header'>
+<span class='repo-badge'>📦 $repo</span>
 <div class='commit-message'>$message</div>
-<span class='repo-badge'>$repo</span>
 </div>
 <div class='commit-meta'>
-<span>🔖 <span class='commit-hash'>$SHORT_HASH</span></span>
-<span>👤 $author</span>
-<span>📅 $date</span>
-<span class='stat-badge'><strong>$files</strong> files</span>
+<span><span class='meta-label'>Hash</span> <span class='commit-hash'>$SHORT_HASH</span></span>
+<span><span class='meta-label'>Author</span> $author</span>
+<span><span class='meta-label'>Date</span> $date</span>
+<span><span class='meta-label'>Files</span> <strong>$files</strong></span>
 <span class='stat-badge add'>+$ins</span>
 <span class='stat-badge del'>-$del</span>
 </div>
@@ -231,7 +237,7 @@ HTML_REPORT+="
 📧 Questions? Reply to this email.<br>
 🔗 Workspace: /home/csa/.openclaw/workspace<br>
 <div class='tagline-footer'>Discover » Improve » Prevail</div>
-⚙️ CyberShield GitHub Activity Report v1.1.0
+⚙️ CyberShield GitHub Activity Report v1.2.0
 </div>
 
 </div>
