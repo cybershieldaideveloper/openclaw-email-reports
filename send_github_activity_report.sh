@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v2.0.1 =====
+# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v2.0.2 =====
 # Comprehensive GitHub repository activity tracking
 # Features:
 # - Multi-repository tracking
@@ -140,11 +140,11 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #f6f8fa; color:
 .footer-content { margin-bottom: 25px; }
 .footer-divider { width: 60%; height: 1px; background: #d0d7de; margin: 20px 0; }
 .footer .tagline-footer { color: #0969da; font-weight: 700; font-size: 16px; margin: 20px 0; letter-spacing: 1px; text-align: center; }
-.footer-watermark { width: 60px; height: auto; opacity: 0.5; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); margin-top: 3em; display: block; }
+.footer-watermark { width: 35px; height: auto; opacity: 0.5; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); margin-top: 3em; display: block; }
 .footer-version { font-size: 12px; color: #656d76; margin-top: 15px; text-align: center; }
 @media only screen and (max-width: 600px) { 
     .footer { padding: 35px 20px 25px 20px; line-height: 2.2; }
-    .footer-watermark { width: 45px; margin-top: 3em; } 
+    .footer-watermark { width: 30px; margin-top: 3em; } 
     .footer-divider { width: 80%; }
 }
 
@@ -249,7 +249,7 @@ HTML_REPORT+="
 </div>
 <div class='footer-divider'></div>
 <div class='tagline-footer'>Discover » Improve » Prevail</div>
-<div class='footer-version'>⚙️ CyberShield GitHub Activity Report v2.0.1</div>"
+<div class='footer-version'>⚙️ CyberShield GitHub Activity Report v2.0.2</div>"
 
 if [ -n "$LOGO_BASE64" ]; then
 HTML_REPORT+="
