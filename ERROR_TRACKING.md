@@ -24,3 +24,8 @@ Resolution: ...
 
 <!-- Errors will be automatically appended below -->
 
+
+[2026-03-12 12:02:28 UTC] [ERROR] send_hourly_activity_v3.sh: Syntax error in script - missing HTML_REPORT+= for footer
+Details: Line 364: HTML comment outside of variable assignment. Fixed by wrapping footer in HTML_REPORT+= statement. Detected during cron execution at 12:01 UTC. Commit: b33c10a
+---
+
