@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v1.4.2 =====
+# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v2.0.0 =====
 # Comprehensive GitHub repository activity tracking
 # Features:
 # - Multi-repository tracking
@@ -105,8 +105,8 @@ HTML_REPORT="<!DOCTYPE html>
 <meta charset='UTF-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 <style>
-body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
-.container { max-width: 1000px; margin: 0 auto; background: #161b22; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); overflow: hidden; }
+body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #f6f8fa; color: #24292f; margin: 0; padding: 20px; }
+.container { max-width: 1000px; margin: 0 auto; background: #ffffff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #d0d7de; }
 .header { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); color: white; padding: 45px 40px; text-align: center; position: relative; overflow: hidden; line-height: 1.6; }
 .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px); animation: slide 20s linear infinite; }
 @keyframes slide { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
@@ -114,34 +114,34 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #0d1117; color:
 .logo { width: 100px; height: auto; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
 .header h1 { margin: 0; font-size: 32px; font-weight: 700; letter-spacing: 1px; }
 .header .subtitle { opacity: 0.9; margin-top: 10px; font-size: 14px; }
-.tagline { margin-top: 15px; font-size: 16px; font-weight: 600; color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; padding: 35px 30px; background: #0d1117; }
-.stat-card { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); padding: 25px 20px; border-radius: 12px; text-align: center; border: 1px solid #30363d; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-.stat-number { font-size: 40px; font-weight: 700; color: #fbbf24; line-height: 1.2; }
-.stat-label { color: #c9d1d9; margin-top: 8px; font-size: 14px; font-weight: 500; }
-.section { padding: 40px 30px; border-bottom: 1px solid #21262d; }
+.tagline { margin-top: 15px; font-size: 16px; font-weight: 600; color: #ffffff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; padding: 35px 30px; background: #f6f8fa; }
+.stat-card { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); padding: 25px 20px; border-radius: 12px; text-align: center; border: 1px solid #2563eb; box-shadow: 0 2px 8px rgba(37,99,235,0.2); }
+.stat-number { font-size: 40px; font-weight: 700; color: #ffffff; line-height: 1.2; }
+.stat-label { color: #e0e7ff; margin-top: 8px; font-size: 14px; font-weight: 500; }
+.section { padding: 40px 30px; border-bottom: 1px solid #d0d7de; }
 .section:last-child { border-bottom: none; }
-.section h2 { margin: 0 0 30px 0; color: #fbbf24; font-size: 26px; display: flex; align-items: center; line-height: 1.3; font-weight: 700; }
+.section h2 { margin: 0 0 30px 0; color: #0969da; font-size: 26px; display: flex; align-items: center; line-height: 1.3; font-weight: 700; }
 .section h2 .emoji { margin-right: 15px; font-size: 30px; }
-.commit-card { background: #0d1117; border: 2px solid #30363d; border-radius: 10px; padding: 20px; margin: 20px 0; transition: all 0.3s; line-height: 1.6; }
-.commit-card:nth-child(even) { background: #161b22; }
-.commit-card:hover { border-color: #1e3a8a; transform: translateX(5px); box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3); }
+.commit-card { background: #f6f8fa; border: 2px solid #d0d7de; border-radius: 10px; padding: 20px; margin: 20px 0; transition: all 0.3s; line-height: 1.6; }
+.commit-card:nth-child(even) { background: #ffffff; }
+.commit-card:hover { border-color: #0969da; transform: translateX(5px); box-shadow: 0 4px 12px rgba(9, 105, 218, 0.2); }
 .commit-header { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
-.repo-badge { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); color: white; padding: 8px 16px; border-radius: 16px; font-size: 14px; font-weight: 700; box-shadow: 0 2px 6px rgba(0,0,0,0.3); display: inline-block; align-self: flex-start; }
-.commit-message { font-size: 19px; font-weight: 700; color: #e6edf3; line-height: 1.4; margin-top: 5px; }
-.commit-hash { font-family: 'Courier New', monospace; font-size: 12px; color: #8b949e; background: #21262d; padding: 4px 10px; border-radius: 5px; font-weight: 600; }
-.commit-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 15px; font-size: 12px; color: #8b949e; line-height: 1.8; }
+.repo-badge { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 8px 16px; border-radius: 16px; font-size: 14px; font-weight: 700; box-shadow: 0 2px 6px rgba(37,99,235,0.3); display: inline-block; align-self: flex-start; }
+.commit-message { font-size: 19px; font-weight: 700; color: #24292f; line-height: 1.4; margin-top: 5px; }
+.commit-hash { font-family: 'Courier New', monospace; font-size: 12px; color: #57606a; background: #f6f8fa; padding: 4px 10px; border-radius: 5px; font-weight: 600; border: 1px solid #d0d7de; }
+.commit-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 15px; font-size: 12px; color: #57606a; line-height: 1.8; }
 .commit-meta span { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
-.commit-meta .meta-label { color: #6e7681; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 6px; font-weight: 600; }
-.stat-badge { background: #21262d; padding: 4px 12px; border-radius: 6px; font-size: 14px; font-weight: 700; }
-.stat-badge.add { color: #3fb950; }
-.stat-badge.del { color: #f85149; }
-.footer { padding: 40px 30px 30px 30px; background: #0d1117; text-align: left; font-size: 13px; color: #8b949e; line-height: 2.0; }
+.commit-meta .meta-label { color: #656d76; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 6px; font-weight: 600; }
+.stat-badge { background: #f6f8fa; padding: 4px 12px; border-radius: 6px; font-size: 14px; font-weight: 700; border: 1px solid #d0d7de; }
+.stat-badge.add { color: #1a7f37; }
+.stat-badge.del { color: #cf222e; }
+.footer { padding: 40px 30px 30px 30px; background: #f6f8fa; text-align: left; font-size: 13px; color: #57606a; line-height: 2.0; }
 .footer-content { margin-bottom: 25px; }
-.footer-divider { width: 60%; height: 1px; background: #21262d; margin: 20px 0; }
-.footer .tagline-footer { color: #fbbf24; font-weight: 700; font-size: 16px; margin: 20px 0; letter-spacing: 1px; text-align: center; }
-.footer-watermark { width: 120px; height: auto; opacity: 0.4; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); margin-top: 3em; display: block; }
-.footer-version { font-size: 12px; color: #6e7681; margin-top: 15px; text-align: center; }
+.footer-divider { width: 60%; height: 1px; background: #d0d7de; margin: 20px 0; }
+.footer .tagline-footer { color: #0969da; font-weight: 700; font-size: 16px; margin: 20px 0; letter-spacing: 1px; text-align: center; }
+.footer-watermark { width: 120px; height: auto; opacity: 0.5; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); margin-top: 3em; display: block; }
+.footer-version { font-size: 12px; color: #656d76; margin-top: 15px; text-align: center; }
 @media only screen and (max-width: 600px) { 
     .footer { padding: 35px 20px 25px 20px; line-height: 2.2; }
     .footer-watermark { width: 90px; margin-top: 3em; } 
@@ -249,7 +249,7 @@ HTML_REPORT+="
 </div>
 <div class='footer-divider'></div>
 <div class='tagline-footer'>Discover » Improve » Prevail</div>
-<div class='footer-version'>⚙️ CyberShield GitHub Activity Report v1.4.2</div>"
+<div class='footer-version'>⚙️ CyberShield GitHub Activity Report v2.0.0</div>"
 
 if [ -n "$LOGO_BASE64" ]; then
 HTML_REPORT+="
