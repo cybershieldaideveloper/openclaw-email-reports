@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v2.0.0 =====
+# ===== CYBERSHIELD GITHUB ACTIVITY REPORT v2.0.1 =====
 # Comprehensive GitHub repository activity tracking
 # Features:
 # - Multi-repository tracking
@@ -111,7 +111,7 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #f6f8fa; color:
 .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px); animation: slide 20s linear infinite; }
 @keyframes slide { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
 .header-content { position: relative; z-index: 1; }
-.logo { width: 100px; height: auto; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
+.logo { width: 50px; height: auto; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
 .header h1 { margin: 0; font-size: 32px; font-weight: 700; letter-spacing: 1px; }
 .header .subtitle { opacity: 0.9; margin-top: 10px; font-size: 14px; }
 .tagline { margin-top: 15px; font-size: 16px; font-weight: 600; color: #ffffff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
@@ -140,11 +140,11 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #f6f8fa; color:
 .footer-content { margin-bottom: 25px; }
 .footer-divider { width: 60%; height: 1px; background: #d0d7de; margin: 20px 0; }
 .footer .tagline-footer { color: #0969da; font-weight: 700; font-size: 16px; margin: 20px 0; letter-spacing: 1px; text-align: center; }
-.footer-watermark { width: 120px; height: auto; opacity: 0.5; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); margin-top: 3em; display: block; }
+.footer-watermark { width: 60px; height: auto; opacity: 0.5; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); margin-top: 3em; display: block; }
 .footer-version { font-size: 12px; color: #656d76; margin-top: 15px; text-align: center; }
 @media only screen and (max-width: 600px) { 
     .footer { padding: 35px 20px 25px 20px; line-height: 2.2; }
-    .footer-watermark { width: 90px; margin-top: 3em; } 
+    .footer-watermark { width: 45px; margin-top: 3em; } 
     .footer-divider { width: 80%; }
 }
 
@@ -165,7 +165,7 @@ body { font-family: 'Aptos', 'Segoe UI', sans-serif; background: #f6f8fa; color:
     .commit-meta span { width: auto; font-size: 13px; padding: 4px 0; }
     .commit-meta .meta-label { font-size: 10px; min-width: 50px; }
     .stat-badge { font-size: 13px; padding: 4px 10px; }
-    .logo { width: 70px; }
+    .logo { width: 40px; }
 }
 </style>
 </head>
@@ -249,7 +249,7 @@ HTML_REPORT+="
 </div>
 <div class='footer-divider'></div>
 <div class='tagline-footer'>Discover » Improve » Prevail</div>
-<div class='footer-version'>⚙️ CyberShield GitHub Activity Report v2.0.0</div>"
+<div class='footer-version'>⚙️ CyberShield GitHub Activity Report v2.0.1</div>"
 
 if [ -n "$LOGO_BASE64" ]; then
 HTML_REPORT+="
